@@ -1,2 +1,1 @@
-# Tira-harjoitusty-
-Helsingin yliopiston harjoitustyö
+# Spell checker
