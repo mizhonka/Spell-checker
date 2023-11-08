@@ -6,14 +6,14 @@ class WordList:
         words (list): The list containing the existing words.
 
     """
+
     def __init__(self):
         """
         The constructor for WordList class.
 
         """
-        self.words=[]
+        self.words = []
         self.form_list()
-
 
     def form_list(self):
         """
@@ -22,7 +22,7 @@ class WordList:
         """
         with open("src/words.txt", encoding="utf-8") as w:
             for row in w:
-                row=row.replace("\n", "")
+                row = row.replace("\n", "")
                 self.words.append(row)
 
     def look_up_word(self, word):
