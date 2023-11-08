@@ -6,7 +6,7 @@ from damerau_levenshtein import DamerauLevenshtein
 class TestSpellchecker(unittest.TestCase):
     def setUp(self):
         self.dictionary = WordList()
-        self.dam_lev=DamerauLevenshtein("hello", "world")
+        self.dam_lev = DamerauLevenshtein("hello", "world")
 
     def test_word_list_exists(self):
         self.assertIsNotNone(self.dictionary.words)
@@ -28,4 +28,3 @@ class TestSpellchecker(unittest.TestCase):
         self.dam_lev.calculate_distance()
         self.assertEqual(len(self.dam_lev.grid), 6)
         self.assertEqual(len(self.dam_lev.grid[0]), 6)
-

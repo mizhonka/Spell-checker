@@ -1,0 +1,23 @@
+# Week 2 Report
+
+**Hours used in total:** x min
+
+## What I did
+
+X
+
+## How has the project progresseprogramming has happened, I only have a concept of what I'm going to do and what kind of structures or algorithms I need.
+
+## What I learned this week
+
+Both the trie data structure and the Damerau–Levenshtein distance were new topics to me. I hadn't really thought before how spell checkers work and how simple in terms of the idea they can be.
+
+## What has been unclear or problematic?
+
+'m still not sure how I'm going to get the needed vocabulary in my program in practice (what is my source?).  
+
+I also haveny cs should be given for misspelled words. I'm guessing there can be lots of words that have a DL distance of one with the misspelled word.
+
+## What next?
+
+X
