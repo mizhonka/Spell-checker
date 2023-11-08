@@ -1,6 +1,6 @@
 # Week 2 Report
 
-**Hours used in total:** 25 min
+**Hours used in total:** 50 min
 
 ## What I did
 
