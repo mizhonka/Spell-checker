@@ -28,4 +28,6 @@ jobs:
         run: bash <(curl -s https://codecov.io/bash)
       - name: Run pylint
         run: poetry run pylint src
+      - name: Run autopep8
+        run: poetry run autopep8 --in-place --recursive src
 
