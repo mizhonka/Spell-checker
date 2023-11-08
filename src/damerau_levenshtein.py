@@ -25,8 +25,10 @@ class DamerauLevenshtein:
         Returns:
             distance (int): The calculated distance.
         """
-        d=[[0]*self.len_b+1 for _ in range(self.len_a+1)]
+        #self.grid=[[0]*self.len_b+1 for _ in range(self.len_a+1)]
+        row=[0]*(self.len_b+1)
+        self.grid=[row]*(self.len_a+1)
         for i in range(self.len_a+1):
-            d[i][0]=i
+            self.grid[i][0]=i
         for i in range(self.len_b+1):
-            d[0][i]=i
+            self.grid[0][i]=i
