@@ -17,6 +17,7 @@ class DamerauLevenshtein:
         """
         self.len_a=len(word_a)
         self.len_b=len(word_b)
+        self.grid=[]
 
     def calculate_distance(self):
         """
@@ -25,7 +26,6 @@ class DamerauLevenshtein:
         Returns:
             distance (int): The calculated distance.
         """
-        #self.grid=[[0]*self.len_b+1 for _ in range(self.len_a+1)]
         row=[0]*(self.len_b+1)
         self.grid=[row]*(self.len_a+1)
         for i in range(self.len_a+1):
