@@ -17,6 +17,9 @@ class TestSpellchecker(unittest.TestCase):
     def test_word_list_fake_word_returns_false(self):
         self.assertFalse(self.dictionary.look_up_word("asdf"))
 
+    def test_dam_lev_empty_grid_on_init(self):
+        self.assertEqual(self.dam_lev.grid, [])
+
     def test_dam_lev_word_lenghts_correct(self):
         self.assertEqual(self.dam_lev.len_a, 5)
         self.assertEqual(self.dam_lev.len_b, 5)
