@@ -1,10 +1,12 @@
+from string import ascii_lowercase
+
 class DamerauLevenshtein:
     """
     This class calculates the Damerau–Levenshtein distance between 2 words.
 
     Attributes:
-        len_a (int): Length of the first (starting) word.
-        len_b (int): Length of the second (target) word.
+        word_a (string): First (starting) word.
+        word_b (string): Second (target) word.
     """
 
     def __init__(self, word_a, word_b):
@@ -15,9 +17,29 @@ class DamerauLevenshtein:
             word_a (string): First (starting) word.
             word_b (string): Second (target) word.
         """
-        self.len_a = len(word_a)
-        self.len_b = len(word_b)
-        self.grid = []
+        self.word_a = word_a.lower()
+        self.word_b = word_b.lower()
+        self.grid = {}
+
+    def _create_grid(self, a, b):
+        """
+        Creates a correct size grid for calculating the distance.
+
+        Parameters:
+            a (int): Length of word_a.
+            b (int): Length of word_b.
+
+        Returns:
+            g (dictionary): Dictionary with tuple-coordinates (-1...a, -1...b) as keys.
+        """
+        coords=[]
+        t=(0,0)
+        for x in range(-1, a+1):
+            for y in range(-1, b+1):
+                t=(x,y)
+                coords.append(t)
+        g=dict.fromkeys(coords,0)
+        return g
 
     def calculate_distance(self):
         """
@@ -26,9 +48,32 @@ class DamerauLevenshtein:
         Returns:
             distance (int): The calculated distance.
         """
-        row = [0]*(self.len_b+1)
-        self.grid = [row]*(self.len_a+1)
-        for i in range(self.len_a+1):
-            self.grid[i][0] = i
-        for i in range(self.len_b+1):
-            self.grid[0][i] = i
+        len_a = len(self.word_a)
+        len_b = len(self.word_b)
+        maxdist=len_a+len_a
+        alpha=dict.fromkeys(list(ascii_lowercase), 0) # dictionary with English letters as keys
+        self.grid = self._create_grid(len_a, len_b)
+        self.grid[(-1,-1)]=maxdist
+        for i in range(len_a+1):
+            self.grid[(i,-1)]=maxdist
+            self.grid[(i,0)] = i
+        for i in range(len_b+1):
+            self.grid[(-1,i)]=maxdist
+            self.grid[(0,i)] = i
+        # at this point self.grid contains the distances of (empty string, word_a) and (empty string, word_b)
+        for i in range(1, len_a+1):
+            tp=0
+            for j in range(1, len_b+1):
+                k=alpha[self.word_b[j-1]]
+                l=tp
+                if self.word_a[i-1]==self.word_b[j-1]:
+                    dist=0
+                    tp=j
+                else:
+                    dist=1
+                self.grid[(i,j)]=min(self.grid[(i-1,j)]+1, # delete
+                                self.grid[(i,j-1)]+1, # insert
+                                self.grid[(i-1,j-1)]+dist,
+                                self.grid[(k-1, l-1)] + (i-k-1) + 1 + (j-l-1)) # substitute
+            alpha[self.word_a[i-1]]=i
+        return self.grid[(len_a,len_b)]
