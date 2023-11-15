@@ -7,5 +7,5 @@ class TestDamerauLevenshtein(unittest.TestCase):
         self.dam_lev = DamerauLevenshtein("CA", "ABC")
 
     def test_dam_lev_distance_is_correct(self):
-        dist=self.dam_lev.calculate_distance()
+        dist = self.dam_lev.calculate_distance()
         self.assertEqual(dist, 2)

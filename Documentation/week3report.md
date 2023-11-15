@@ -1,6 +1,6 @@
 # Week 3 Report
 
-**Hours used in total:** 7 (210 min)
+**Hours used in total:** 7 (240 min)
 
 ## What I did
 
