@@ -4,7 +4,9 @@
 
 ## What I did
 
-This week I looked through coding examples and figured out the logic behind the Damerau-Levenshtein algorithm. I implemented a working algorithm into my program and also made a simple main program to test these features. As usual I made sure my project has full test coverage and code quality is checked with pylint.
+This week I looked through coding examples and figured out the logic behind the Damerau-Levenshtein algorithm. I implemented a working algorithm into my program and also made a simple main program to test these features. As usual I made sure my project has full test coverage and code quality is checked with pylint.  
+
+Started working on a testing document.
 
 ## How has the project progressed?
 
