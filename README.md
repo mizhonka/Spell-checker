@@ -3,6 +3,7 @@
 ## Documentation
 
 [Project specification](https://github.com/mizhonka/Spell-checker/blob/main/Documentation/projectspec.md)  
+
 [Testing document](https://github.com/mizhonka/Spell-checker/blob/main/Documentation/testing_document.md)
 
 ## Weekly reports
