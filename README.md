@@ -1,10 +1,9 @@
 # Spell checker
 
-[![codecov](https://codecov.io/gh/mizhonka/Spell-checker/graph/badge.svg?token=2QSRCPDGGL)](https://codecov.io/gh/mizhonka/Spell-checker)
-
 ## Documentation
 
-[Project specification](https://github.com/mizhonka/Spell-checker/blob/main/Documentation/projectspec.md)
+[Project specification](https://github.com/mizhonka/Spell-checker/blob/main/Documentation/projectspec.md)  
+[Testing document](https://github.com/mizhonka/Spell-checker/blob/main/Documentation/testing_document.md)
 
 ## Weekly reports
 
