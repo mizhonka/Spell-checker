@@ -1,9 +1,9 @@
 class WordList:
     """
-    This class handles a list of words in the vocabulary.
+    This class contains a list of words in the vocabulary.
 
     Attributes:
-        words (list): The list containing the existing words.
+        words (list): List containing the existing words.
 
     """
 
@@ -20,7 +20,7 @@ class WordList:
         Reads the words.txt file and adds the words to a list.
 
         """
-        with open("src/words.txt", encoding="utf-8") as w:
+        with open("src/static/words.txt", encoding="utf-8") as w:
             for row in w:
                 row = row.replace("\n", "")
                 self.words.append(row)
