@@ -23,7 +23,7 @@ class WordList:
         with open("src/static/words.txt", encoding="utf-8") as w:
             for row in w:
                 row = row.replace("\n", "")
-                self.words.append(row)
+                self.words.append(row.lower())
 
     def look_up_word(self, word):
         """
@@ -37,6 +37,6 @@ class WordList:
             False (boolean): If the word doesn't exist.
 
         """
-        if word in self.words:
+        if word.lower() in self.words:
             return True
         return False

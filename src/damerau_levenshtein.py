@@ -52,7 +52,9 @@ class DamerauLevenshtein:
         len_a, len_b = len(self.word_a), len(self.word_b)
         maxdist = len_a+len_a
         # dictionary with English letters as keys
-        alpha = dict.fromkeys(list(ascii_lowercase), 0)
+        alphabet=list(ascii_lowercase)
+        alphabet.append("-")
+        alpha = dict.fromkeys(alphabet, 0)
         self.grid = self._create_grid(len_a, len_b)
         self.grid[(-1, -1)] = maxdist
         for i in range(len_a+1):

@@ -1,10 +1,12 @@
 # Week 4 Report
 
-**Hours used in total:** 11 (60 min)
+**Hours used in total:** 11 (90 min)
 
 ## What I did
 
-X
+TextData
+
+poetry tasks
 
 ## How has the project progressed?
 
