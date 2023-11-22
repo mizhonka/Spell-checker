@@ -42,6 +42,17 @@ class DamerauLevenshtein:
         g = dict.fromkeys(coords, 0)
         return g
 
+    def _form_alphabet(self):
+        """
+        Creates a list of characters that are allowed in words.
+
+        Returns:
+            alphabet (list): The chosen list.
+        """
+        alphabet = list(ascii_lowercase)
+        alphabet.append("-")
+        return alphabet
+
     def calculate_distance(self):
         """
         Calculates the Damerau–Levenshtein distance.
@@ -52,9 +63,7 @@ class DamerauLevenshtein:
         len_a, len_b = len(self.word_a), len(self.word_b)
         maxdist = len_a+len_a
         # dictionary with English letters as keys
-        alphabet=list(ascii_lowercase)
-        alphabet.append("-")
-        alpha = dict.fromkeys(alphabet, 0)
+        alpha = dict.fromkeys(self._form_alphabet(), 0)
         self.grid = self._create_grid(len_a, len_b)
         self.grid[(-1, -1)] = maxdist
         for i in range(len_a+1):

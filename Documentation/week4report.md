@@ -1,6 +1,6 @@
 # Week 4 Report
 
-**Hours used in total:** 11 (90 min)
+**Hours used in total:** 11 (100 min)
 
 ## What I did
 
