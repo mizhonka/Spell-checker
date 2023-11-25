@@ -6,7 +6,7 @@
 
 [Testing document](https://github.com/mizhonka/Spell-checker/blob/main/Documentation/testing_document.md)
 
-[Implementation document](https://github.com/mizhonka/Spell-checker/tree/main/Documentation)
+[Implementation document](https://github.com/mizhonka/Spell-checker/blob/main/Documentation/implementation.md)
 
 ## Weekly reports
 
