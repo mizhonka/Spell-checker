@@ -1,28 +1,28 @@
 # Week 4 Report
 
-**Hours used in total:** 16
+**Hours used:** 5
 
 ## What I did
 
-Mostly finished core functionality. Created new classes FileManager (for reading user input from files) and SpellChecker (for handling user input and giving spelling suggestions).  
+Mostly finished core functionality. Created new classes FileManager (for reading user input from files) and SpellChecker (for handling user input and giving spelling suggestions).
 
-Created poetry tasks for running the main program, pylint and unit testing.  
+Created poetry tasks for running the main program, pylint and unit testing.
 
 Updated the testing document and started working on the implementation document.
 
 ## How has the project progressed?
 
-The program can be run with command _poetry run invoke start_.  
+The program can be run with command _poetry run invoke start_.
 
-The user can either write text directly through command line or give a file path to a text file.  
+The user can either write text directly through command line or give a file path to a text file.
 
-The program will then check the user input for incorrect words. If any mistakes exist, the program will give correction suggestions, which the user can either accept or skip.  
+The program will then check the user input for incorrect words. If any mistakes exist, the program will give correction suggestions, which the user can either accept or skip.
 
 Accepted corrections will be applied and the corrected text will be printed out. If the user passed a file, the file will be overwritten with the corrected text.
 
 ## What I learned this week
 
-Learned to replace _for i in range 0, len()_ structure with enumerate, since pylint suggested it. Also reminded myself how to use poetry tasks and draw class diagrams. 
+Learned to replace _for i in range 0, len()_ structure with enumerate, since pylint suggested it. Also reminded myself how to use poetry tasks and draw class diagrams.
 
 ## What has been unclear or problematic?
 

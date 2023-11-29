@@ -1,6 +1,6 @@
 # Week 1 Report
 
-**Hours used in total:** 3
+**Hours used:** 3
 
 ## What I did
 
@@ -17,7 +17,7 @@ Both the trie data structure and the Damerau–Levenshtein distance were new top
 
 ## What has been unclear or problematic?
 
-I'm still not sure how I'm going to get the needed vocabulary in my program in practice (what is my source?).  
+I'm still not sure how I'm going to get the needed vocabulary in my program in practice (what is my source?).
 
 I also haven't decided how many correction suggestions should be given for misspelled words. I'm guessing there can be lots of words that have a DL distance of one with the misspelled word.
 

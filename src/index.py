@@ -2,7 +2,12 @@ from spell_checker import SpellChecker
 from file_manager import FileManager
 
 
-def handle_corrections(corrections, checker, file):
+def handle_corrections(text, file):
+    checker = SpellChecker(text)
+    corrections = checker.get_suggestions()
+    if len(corrections) < 1:
+        print("There are no spelling errors, yay!\n")
+        return
     done = 0
     print("The following words were spelled incorrectly: \n")
     for index, correction in corrections.items():
@@ -19,11 +24,11 @@ def handle_corrections(corrections, checker, file):
     if done and file:
         file.write_file(corrected_text)
     print(f"{done} corrections were made\n")
-    print(corrected_text)
+    print(corrected_text + "\n")
 
 
 def get_data(cmd):
-    file=None
+    file = None
     if cmd == 1:
         text = input("Input text: ")
     elif cmd == 2:
@@ -35,20 +40,21 @@ def get_data(cmd):
 
 def main():
     while True:
-        cmd = int(input("1 - Type text\n2 - Enter file path\n3 - Exit\n"))
+        try:
+            cmd = int(input("1 - Type text\n2 - Enter file path\n3 - Exit\n"))
+        except ValueError:
+            print("Please enter a valid command\n")
+            continue
         if cmd in (1, 2):
             text, file = get_data(cmd)
             if not text:
                 continue
         elif cmd == 3:
             break
-        checker = SpellChecker(text)
-        corrections = checker.get_suggestions()
-        if len(corrections):
-            handle_corrections(corrections, checker, file)
-            break
-        print("There are no spelling errors, yay!")
-        break
+        else:
+            print("Please enter a valid command\n")
+            continue
+        handle_corrections(text, file)
 
 
 if __name__ == "__main__":

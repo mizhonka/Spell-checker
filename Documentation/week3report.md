@@ -1,10 +1,10 @@
 # Week 3 Report
 
-**Hours used in total:** 11
+**Hours used:** 4
 
 ## What I did
 
-This week I looked through coding examples and figured out the logic behind the Damerau-Levenshtein algorithm. I implemented a working algorithm into my program and also made a simple main program to test these features. As usual I made sure my project has full test coverage and code quality is checked with pylint.  
+This week I looked through coding examples and figured out the logic behind the Damerau-Levenshtein algorithm. I implemented a working algorithm into my program and also made a simple main program to test these features. As usual I made sure my project has full test coverage and code quality is checked with pylint.
 
 Started working on a testing document.
 
@@ -12,7 +12,7 @@ Started working on a testing document.
 
 The class DamerauLevenshtein now has a working function to calculate the distance between two words.
 
-Via command line (execute _python src/index.py_) the user can  
+Via command line (execute _python src/index.py_) the user can
 1. Test whether a given word is "correct" (exists in the vocabulary)
 2. Calculate the Damerau-Levenshtein distance between two words (the smallest number of operations to turn word1 into word2)
 
