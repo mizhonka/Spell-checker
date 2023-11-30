@@ -1,6 +1,6 @@
 # Week 5 Report
 
-**Hours used:** 30 min
+**Hours used:** 140 min
 
 ## What I did
 

@@ -47,7 +47,7 @@ class SpellChecker:
         """
         for wrong, index in self._incorrect_words.items():
             cur = ("", -1)
-            for word in self._dictionary.words:
+            for word in self._dictionary.iterator:
                 dam_lev = DamerauLevenshtein(wrong, word)
                 distance = dam_lev.calculate_distance()
                 if cur[1] < 0 or distance < cur[1]:
