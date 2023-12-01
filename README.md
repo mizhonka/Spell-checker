@@ -16,4 +16,6 @@
 
 [Week 3](https://github.com/mizhonka/Spell-checker/blob/main/Documentation/week3report.md)  
 
-[Week 4](https://github.com/mizhonka/Spell-checker/blob/main/Documentation/week4report.md)
+[Week 4](https://github.com/mizhonka/Spell-checker/blob/main/Documentation/week4report.md)  
+
+[Week 5](https://github.com/mizhonka/Spell-checker/blob/main/Documentation/week5report.md)
