@@ -1,6 +1,6 @@
+from string import punctuation
 from damerau_levenshtein import DamerauLevenshtein
 from word_list import WordList
-from string import punctuation
 
 
 class SpellChecker:
@@ -24,7 +24,7 @@ class SpellChecker:
 
         """
         self._words = data.split()
-        self._extras={}
+        self._extras = {}
         self._get__extras()
         self._incorrect_words = {}
         self._dictionary = WordList()
@@ -36,12 +36,11 @@ class SpellChecker:
         Fills a list with characters that are ignored by the spell checker.
 
         """
-        keys=[*punctuation]
+        keys = [*punctuation]
         keys.remove("-")
         for n in range(10):
             keys.append(str(n))
-        self._extras=dict.fromkeys(keys, "")
-
+        self._extras = dict.fromkeys(keys, "")
 
     def _strip_characters(self, word):
         """
@@ -62,7 +61,7 @@ class SpellChecker:
 
         """
         for i, word in enumerate(self._words):
-            stripped=self._strip_characters(word)
+            stripped = self._strip_characters(word)
             if not stripped:
                 continue
             if not self._dictionary.look_up_word(stripped):

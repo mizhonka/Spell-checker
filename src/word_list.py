@@ -43,7 +43,7 @@ class WordList:
             (int) Index.
 
         """
-        if ch=="-":
+        if ch == "-":
             return 26
         return ord(ch)-ord("a")
 
