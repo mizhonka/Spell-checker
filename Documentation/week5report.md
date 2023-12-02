@@ -1,16 +1,16 @@
 # Week 5 Report
 
-**Hours used:** 2
+**Hours used:** 3
 
 ## What I did
 
-Did some error checking and pylint improvements to index.  
+Did some error checking and pylint improvements to index.
 
-Implemented trie structure to WordList and created a function for removing punctuation.  
+Implemented trie structure to WordList and created a function for removing punctuation (doesn't work yet).
 
 ## How has the project progressed?
 
-The words are now stored in a trie. If the user input contains any punctuation or numbers, they are removed from the words in question.
+The words are now stored in a trie instead of a list.
 
 ## What I learned this week
 
