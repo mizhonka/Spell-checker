@@ -36,10 +36,10 @@ class SpellChecker:
         Fills a list with characters that are ignored by the spell checker.
 
         """
-        keys = [*punctuation]
-        keys.remove("-")
+        keys = [ord(p) for p in punctuation]
+        keys.remove(ord("-"))
         for n in range(10):
-            keys.append(str(n))
+            keys.append(ord(str(n)))
         self._extras = dict.fromkeys(keys, "")
 
     def _strip_characters(self, word):
@@ -53,7 +53,8 @@ class SpellChecker:
             (string): Stripped word.
 
         """
-        return word.translate(self._extras)
+        stripped=word.translate(self._extras)
+        return stripped
 
     def _get_incorrect_words(self):
         """
