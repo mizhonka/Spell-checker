@@ -1,6 +1,6 @@
 # Week 6 Report
 
-**Hours used:** ()
+**Hours used:** (30 min)
 
 ## What I did
 
