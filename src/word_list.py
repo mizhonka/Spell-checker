@@ -1,10 +1,11 @@
+from string import ascii_lowercase
 class TrieNode:
     """
     This class acts as a node for trie.
 
     Attributes:
         children (list): Children of this node.
-        is_end_of_word (boolean): True if this node is the last letter of a word, else False
+        is_end_of_word (boolean): True if this node is the last letter of a word, else False.
 
     """
 
@@ -32,7 +33,6 @@ class WordList:
 
         """
         self.words = TrieNode()
-        self.iterator = []
         self.form_list()
 
     def _get_index(self, ch):
@@ -46,6 +46,18 @@ class WordList:
         if ch == "-":
             return 26
         return ord(ch)-ord("a")
+
+    def _get_letter(self, n):
+        """
+        Finds a letter with its index.
+
+        Returns:
+            (str) Letter.
+
+        """
+        if n==26:
+            return "-"
+        return ascii_lowercase[n]
 
     def _insert(self, word):
         """
@@ -64,6 +76,40 @@ class WordList:
             cur = cur.children[index]
         cur.is_end_of_word = True
 
+    def _search(self, node, word, result):
+        """
+        Performs a depth-first search.
+
+        Parameters:
+            node (TrieNode): Current node.
+            word (string): Current word.
+            result (list): Words collected.
+
+        Returns:
+            result (list): Words collected.
+
+        """
+        for n in range(0, 27):
+            next=node.children[n]
+            if next:
+                new_word=word+self._get_letter(n)
+                if next.is_end_of_word:
+                    result.append(new_word)
+                result=self._search(next, new_word, result)
+        return result
+
+
+    def get_words(self):
+        """
+        Gets all words in the trie using DFS:
+
+        Returns:
+            (list): Found words.
+
+        """
+        return self._search(self.words, "", [])
+
+
     def form_list(self):
         """
         Reads words.txt file and inserts the words.
@@ -72,7 +118,6 @@ class WordList:
         with open("src/static/words.txt", encoding="utf-8") as w:
             for row in w:
                 row = row.replace("\n", "")
-                self.iterator.append(row)
                 self._insert(row.lower())
 
     def look_up_word(self, word):

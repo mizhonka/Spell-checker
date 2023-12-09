@@ -1,10 +1,12 @@
 # Week 6 Report
 
-**Hours used:** (30 min)
+**Hours used:** (160 min)
 
 ## What I did
 
-X
+Changed my vocabulary list to a smaller one with more common words.
+
+Implemented a depth-first search for the trie, so there's no need for storing a list.
 
 ## How has the project progressed?
 
