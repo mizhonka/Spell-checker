@@ -9,6 +9,7 @@ class SpellChecker:
 
     Attributes:
         _words (list): List containing every word in the input data.
+        _extras (dictionary): Dictionary containing numbers and punctuation, that are ignored by the algorithm.
         _incorrect_words (dictionary): Dictionary containing every incorrect word and it's index.
         _suggestions (dictionary): Dictionary containing a suggested word for every incorrect word.
         _dictionary (WordList): Instance of class WordList.
@@ -33,7 +34,7 @@ class SpellChecker:
 
     def _get__extras(self):
         """
-        Fills a list with characters that are ignored by the spell checker.
+        Fills a dictionary with characters that are ignored by the spell checker.
 
         """
         keys = [ord(p) for p in punctuation]

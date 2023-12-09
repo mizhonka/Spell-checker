@@ -4,7 +4,7 @@
 
 ## What I did
 
-This week I implemented a simple class for vocabulary. I also started implementing an algorithm for calculating the Damerau-Lavenshtein distance and looked up some tutorials online.
+This week I implemented a simple class for vocabulary. I also started implementing an algorithm for calculating the Damerau-Levenshtein distance and looked up some tutorials online.
 
 I created some tests for these classes and put up test coverage to Codecov (badge is located at the top of the README file). I also added docstring to them.
 
@@ -12,15 +12,15 @@ Testing, checking code quality with pylint and sending coverage report to Codeco
 
 ## How has the project progressed?
 
-The program now has two classes; WordList and DamerauLavenshtein. Both of these classes have 100% test coverage.
+The program now has two classes; WordList and DamerauLevenshtein. Both of these classes have 100% test coverage.
 
 WordList contains a simple list that contains the needed English vocabulary and a function to check if a given word exists.
 
-For now DamerauLavenshtein has no functionality and only has basic construction.
+For now DamerauLevenshtein has no functionality and only has basic construction.
 
 ## What I learned this week
 
-I learned more about the Damerau-Lavenshtein algorithm, especially how the basic Lavenshtein algorithm is implemented.
+I learned more about the Damerau-Levenshtein algorithm, especially how the basic Lavenshtein algorithm is implemented.
 
 ## What has been unclear or problematic?
 
