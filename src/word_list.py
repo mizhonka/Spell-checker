@@ -90,12 +90,12 @@ class WordList:
 
         """
         for n in range(0, 27):
-            next=node.children[n]
-            if next:
+            child=node.children[n]
+            if child:
                 new_word=word+self._get_letter(n)
-                if next.is_end_of_word:
+                if child.is_end_of_word:
                     result.append(new_word)
-                result=self._search(next, new_word, result)
+                result=self._search(child, new_word, result)
         return result
 
 
