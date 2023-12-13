@@ -38,8 +38,8 @@ class TestSpellChecker(unittest.TestCase):
         self.assertEqual(input, str_form)
 
     def test_input_without_letters_gives_no_corrections(self):
-        input="123!"
-        checker=SpellChecker(input)
-        corrections=checker.get_suggestions()
+        input = "123!"
+        checker = SpellChecker(input)
+        corrections = checker.get_suggestions()
         self.assertEqual(len(corrections), 0)
         self.assertTrue(input not in checker._incorrect_words)

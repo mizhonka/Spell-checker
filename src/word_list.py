@@ -1,4 +1,6 @@
 from string import ascii_lowercase
+
+
 class TrieNode:
     """
     This class acts as a node for trie.
@@ -55,7 +57,7 @@ class WordList:
             (str) Letter.
 
         """
-        if n==26:
+        if n == 26:
             return "-"
         return ascii_lowercase[n]
 
@@ -90,14 +92,13 @@ class WordList:
 
         """
         for n in range(0, 27):
-            child=node.children[n]
+            child = node.children[n]
             if child:
-                new_word=word+self._get_letter(n)
+                new_word = word+self._get_letter(n)
                 if child.is_end_of_word:
                     result.append(new_word)
-                result=self._search(child, new_word, result)
+                result = self._search(child, new_word, result)
         return result
-
 
     def get_words(self):
         """
@@ -108,7 +109,6 @@ class WordList:
 
         """
         return self._search(self.words, "", [])
-
 
     def form_list(self):
         """

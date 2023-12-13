@@ -9,7 +9,7 @@ class SpellChecker:
 
     Attributes:
         _words (list): List containing every word in the input data.
-        _extras (dictionary): Dictionary containing numbers and punctuation, that are ignored by the algorithm.
+        _extras (dictionary): Dictionary containing characters ignored by the algorithm.
         _incorrect_words (dictionary): Dictionary containing every incorrect word and it's index.
         _suggestions (dictionary): Dictionary containing a suggested word for every incorrect word.
         _dictionary (WordList): Instance of class WordList.
@@ -54,7 +54,7 @@ class SpellChecker:
             (string): Stripped word.
 
         """
-        stripped=word.translate(self._extras)
+        stripped = word.translate(self._extras)
         return stripped
 
     def _get_incorrect_words(self):

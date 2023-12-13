@@ -1,5 +1,6 @@
 from spell_checker import SpellChecker
 from file_manager import FileManager
+from ui.ui import UI
 
 
 def handle_corrections(text, file):
@@ -39,6 +40,7 @@ def get_data(cmd):
 
 
 def main():
+    """
     while True:
         try:
             cmd = int(input("1 - Type text\n2 - Enter file path\n3 - Exit\n"))
@@ -55,6 +57,9 @@ def main():
             print("Please enter a valid command\n")
             continue
         handle_corrections(text, file)
+    """
+    ui = UI()
+    ui.run()
 
 
 if __name__ == "__main__":
