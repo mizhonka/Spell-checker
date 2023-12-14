@@ -63,7 +63,7 @@ class SpellChecker:
 
         """
         for i, word in enumerate(self._words):
-            stripped = self._strip_characters(word)
+            stripped = self._strip_characters(word.lower())
             if not stripped:
                 continue
             if not self._dictionary.look_up_word(stripped):
