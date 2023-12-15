@@ -35,7 +35,7 @@ class WordList:
 
         """
         self.words = TrieNode()
-        self.form_list()
+        self.size=1
 
     def _get_index(self, ch):
         """
@@ -74,6 +74,7 @@ class WordList:
         for i in range(length):
             index = self._get_index(word[i])
             if not cur.children[index]:
+                self.size+=1
                 cur.children[index] = TrieNode()
             cur = cur.children[index]
         cur.is_end_of_word = True

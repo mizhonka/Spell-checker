@@ -29,6 +29,7 @@ class SpellChecker:
         self._get__extras()
         self._incorrect_words = {}
         self._dictionary = WordList()
+        self._dictionary.form_list()
         self._suggestions = {}
         self._get_incorrect_words()
 
