@@ -1,4 +1,5 @@
 from string import punctuation
+from string import ascii_uppercase
 from damerau_levenshtein import DamerauLevenshtein
 from word_list import WordList
 
@@ -55,7 +56,8 @@ class SpellChecker:
             (string): Stripped word.
 
         """
-        stripped = word.translate(self._extras)
+        word_lowercase=word.lower()
+        stripped = word_lowercase.translate(self._extras)
         return stripped
 
     def _get_incorrect_words(self):
@@ -64,7 +66,7 @@ class SpellChecker:
 
         """
         for i, word in enumerate(self._words):
-            stripped = self._strip_characters(word.lower())
+            stripped = self._strip_characters(word)
             if not stripped:
                 continue
             if not self._dictionary.look_up_word(stripped):
@@ -79,14 +81,17 @@ class SpellChecker:
 
         """
         for wrong, index in self._incorrect_words.items():
+            stripped=self._strip_characters(wrong)
             cur = ("", -1)
             for word in self._dictionary.get_words():
-                dam_lev = DamerauLevenshtein(wrong, word)
+                dam_lev = DamerauLevenshtein(stripped, word)
                 distance = dam_lev.calculate_distance()
                 if cur[1] < 0 or distance < cur[1]:
                     cur = (word, distance)
                 if cur[1] == 1:
                     break
+            if wrong[0] in ascii_uppercase:
+                cur=(cur[0].capitalize(), cur[1])
             self._suggestions[index] = cur[0]
         return self._suggestions
 

@@ -11,6 +11,7 @@ class MainView():
     def _start(self):
         self.submit["state"]="disabled"
         self.submit["text"]="Processing..."
+        self._frame.update_idletasks()
         self.command()
 
     def _stop(self):
@@ -29,7 +30,6 @@ class MainView():
             return
         pair=self.suggestions[0]
         self.correction_title["text"]=f"'{self.checker.get_word_at(pair[0])}', did you mean '{pair[1]}'?"
-        self.pack()
 
     def _no_mistakes(self):
         self.correction_title["text"]="There are no spelling mistakes, yay!"
@@ -64,6 +64,8 @@ class MainView():
 
     def _open_file(self):
         file = filedialog.askopenfile(filetypes=[("Text files", "*.txt")])
+        if not file:
+            return
         content = ""
         for row in file:
             content += row
@@ -72,6 +74,8 @@ class MainView():
 
     def _save_file(self):
         file = filedialog.asksaveasfile()
+        if not file:
+            return
         file.write(self.input.get("1.0", "end"))
 
     def _initialize(self):
