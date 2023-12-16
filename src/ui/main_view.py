@@ -1,4 +1,4 @@
-from tkinter import ttk, Text, filedialog, constants
+from tkinter import ttk, Text, filedialog, constants, font
 
 class MainView():
     def __init__(self, root, command):
@@ -6,6 +6,7 @@ class MainView():
         self.command=command
         self.checker=None
         self.suggestions=None
+        self.def_font=font.nametofont("TkDefaultFont")
         self._initialize()
 
     def _start(self):
@@ -20,7 +21,9 @@ class MainView():
 
     def _show_next(self):
         if not self.suggestions:
+            self.first_word.grid_remove()
             self.correction_title.grid_remove()
+            self.second_word.grid_remove()
             self.accept.grid_remove()
             self.skip.grid_remove()
             self.input.delete("1.0", "end")
@@ -29,7 +32,8 @@ class MainView():
             self.pack()
             return
         pair=self.suggestions[0]
-        self.correction_title["text"]=f"'{self.checker.get_word_at(pair[0])}', did you mean '{pair[1]}'?"
+        self.first_word["text"]=f"{self.checker.get_word_at(pair[0])}"
+        self.second_word["text"]=f"{pair[1]}?"
 
     def _no_mistakes(self):
         self.correction_title["text"]="There are no spelling mistakes, yay!"
@@ -51,7 +55,9 @@ class MainView():
         if not self.suggestions:
             self._no_mistakes()
             return
+        self.first_word.grid()
         self.correction_title.grid()
+        self.second_word.grid()
         self.accept.grid()
         self.skip.grid()
         self._show_next()
@@ -92,23 +98,35 @@ class MainView():
         file_submit = ttk.Button(
             self._frame, text="Open file", command=self._open_file)
 
-        correction_title=ttk.Label(self._frame, text="Did you mean...")
+        first_word=ttk.Label(self._frame, font=(self.def_font['family'], self.def_font['size'], 'bold'))
+        second_word=ttk.Label(self._frame, font=(self.def_font['family'], self.def_font['size'], 'bold'))
+        correction_title=ttk.Label(self._frame, text="did you mean")
         accept_button=ttk.Button(self._frame, text="Accept", command=self._accept_correction)
         skip_button=ttk.Button(self._frame, text="Skip", command=self._skip_correction)
+
+
         file_submit.grid(row=0, column=0)
         file_save.grid(row=0, column=1)
         input_field.grid(row=1, column=0, columnspan=2, sticky=(constants.E, constants.W))
 
-        correction_title.grid(row=2, column=0)
+        first_word.grid(row=2, column=0)
+        first_word.grid_remove()
+        self.first_word=first_word
+
+        correction_title.grid(row=3, column=0)
         correction_title.grid_remove()
         self.correction_title=correction_title
 
-        accept_button.grid(row=3, column=0)
+        second_word.grid(row=4, column=0)
+        second_word.grid_remove()
+        self.second_word=second_word
+
+        accept_button.grid(row=5, column=0)
         accept_button.grid_remove()
         self.accept=accept_button
 
-        skip_button.grid(row=3, column=1)
+        skip_button.grid(row=6, column=0)
         skip_button.grid_remove()
         self.skip=skip_button
 
-        input_submit.grid(row=4, column=0)
+        input_submit.grid(row=7, column=0)

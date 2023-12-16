@@ -32,5 +32,3 @@ class TestDamerauLevenshtein(unittest.TestCase):
         dam_lev=DamerauLevenshtein("stack", "taken")
         dist = dam_lev.calculate_distance()
         self.assertEqual(dist, 4)
-
-    # testaa suppealla sanastolla

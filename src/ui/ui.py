@@ -9,8 +9,8 @@ class UI:
     def __init__(self):
         self._root = Tk()
         self._root.title("Spell Checker")
-        self._root.geometry("800x300")
-        self._root.grid_columnconfigure(0, weight=1)
+        self._root.geometry("800x400")
+        self._root.grid_columnconfigure(0, weight=1, minsize=40)
         self._current_view = None
 
     def _hide_current_view(self):
