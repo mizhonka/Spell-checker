@@ -13,6 +13,10 @@ class MainView():
         self.submit["text"]="Processing..."
         self.command()
 
+    def _stop(self):
+        self.submit["state"]="normal"
+        self.submit["text"]="Submit"
+
     def _show_next(self):
         if not self.suggestions:
             self.correction_title.grid_remove()
@@ -20,11 +24,17 @@ class MainView():
             self.skip.grid_remove()
             self.input.delete("1.0", "end")
             self.input.insert("1.0", self.checker.get_text())
+            self._stop()
             self.pack()
             return
         pair=self.suggestions[0]
         self.correction_title["text"]=f"'{self.checker.get_word_at(pair[0])}', did you mean '{pair[1]}'?"
         self.pack()
+
+    def _no_mistakes(self):
+        self.correction_title["text"]="There are no spelling mistakes, yay!"
+        self.correction_title.grid()
+        self._stop()
 
     def _skip_correction(self):
         self.suggestions.pop(0)
@@ -38,6 +48,9 @@ class MainView():
     def show_corrections(self, checker):
         self.checker=checker
         self.suggestions=[(i,s) for i, s in checker.get_suggestions().items()]
+        if not self.suggestions:
+            self._no_mistakes()
+            return
         self.correction_title.grid()
         self.accept.grid()
         self.skip.grid()

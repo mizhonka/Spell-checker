@@ -68,7 +68,7 @@ class SpellChecker:
             if not stripped:
                 continue
             if not self._dictionary.look_up_word(stripped):
-                self._incorrect_words[stripped] = i
+                self._incorrect_words[word] = i
 
     def get_suggestions(self):
         """
