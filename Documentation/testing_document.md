@@ -2,41 +2,29 @@
 
 ## Unit testing
 
-[![codecov](https://codecov.io/gh/mizhonka/Spell-checker/graph/badge.svg?token=2QSRCPDGGL)](https://codecov.io/gh/mizhonka/Spell-checker)
-The following classes have been tested via Python unittest, and branch coverage can be seen on Codecov (click the badge above). Tests and UI have been excluded.
+![codecov](https://codecov.io/gh/mizhonka/Spell-checker/graph/badge.svg?token=2QSRCPDGGL)  
+The following classes have been tested via Python unittest, and branch coverage can be seen on Codecov (click the badge above). Test and UI folders have been excluded.
 
 ### WordList
 
-**test_word_list_exists**: list initialized is not none
+Using the same vocabulary as the program, the following features have been tested:
+* WordList instance exists
+* Real word returns true (input string 'hello')
+* Fake work returns false (input string 'asdf')
 
-**test_word_list_real_word_returns_true**: real word returns true (tested with input string 'hello')
-
-**test_word_list_fake_word_returns_false**: fake word return false (tested with input string 'asdf')
+In addition the following trie structure has been tested:
+![Trie diagram](https://github.com/mizhonka/Spell-checker/blob/main/Documentation/trie%20diagram.png)
+* Trie size (number of nodes) is correct
+* Trie contains the selected words (input strings 'a', 're', 'in', 'inn', 'rat', 'ran', 'rap')
 
 ### DamerauLevenshtein
 
-**test_dam_lev_distance_is_correct**: Damerau-Levenshtein distance is calculated correctly (tested with input strings 'CA' and 'ABC')
-
-### SpellChecker
-
-**test_spell_checker_gives_suggestion_for_incorrect_word**: SpellChecker gives a right amount of corrections for the right words (tested with input string 'hello world asdf')
-
-**test_distance_of_one_gets_corrected**: SpellChecker gives a correction when incorrect word has a DamerauLevenshtein distance of 1 with another word (tested with input string 'fooo')
-
-**test_get_word_at_returns_correct_word**: SpellChecker function _get_word_at(index)_ returns the right word (tested with input string 'one two three')
-
-**test_correct_changes_word**: SpellChecker function _correct(index, correction)_ changes the right word (tested with input string 'onn')
-
-**test_get_text_returns_correct_text**: SpellChecker function _get_text()_ returns the right string (tested with input string 'one two three')
-
-**test_input_without_letters_gives_no_corrections**: SpellChecker ignores words with no letters (tested with input string '123!')
-
-### FileManager
-
-**test_file_manager_returns_text_with_existing_file**: FileManager returns file content as string when the file exists (tested with file _testfile.txt_ inside the _tests_ folder)
-
-**test_file_manager_returns_none_with_non_existing_file**: FileManager returns _None_ when trying to read a non-existing file (tested with fake file path 'doesnotexist.txt')
-
-**test_file_manager_writes_file**: FileManager changes file content to given input (tested with input 'four five six' with testfile.txt)
+The Damerau-Levenshtein algortihm resulting in a correct distance has been tested with the following pairs of strings:
+* 'treat', 'threats' (insertions)
+* 'tryout', 'out' (removals)
+* 'crash', 'brass' (substitutions)
+* 'angel', 'angle' (transposition)
+* 'kitten', 'sitting' (transposition, insertion)
+* 'stack', 'taken' (all operations)
 
 
