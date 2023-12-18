@@ -6,11 +6,11 @@ class TestWordList(unittest.TestCase):
     def setUp(self):
         self.dictionary = WordList()
         self.dictionary.form_list()
-        self.words=["a", "re", "in", "inn", "rat", "ran", "rap"]
-        self.trie=self.create_trie()
+        self.words = ["a", "re", "in", "inn", "rat", "ran", "rap"]
+        self.trie = self.create_trie()
 
     def create_trie(self):
-        trie=WordList()
+        trie = WordList()
         for w in self.words:
             trie._insert(w)
         return trie
@@ -19,10 +19,10 @@ class TestWordList(unittest.TestCase):
         self.assertEqual(self.trie.size, 11)
 
     def test_trie_contains_words(self):
-        isFound=True
+        isFound = True
         for w in self.words:
             if not self.trie.look_up_word(w):
-                isFound=False
+                isFound = False
                 break
         self.assertTrue(isFound)
 
