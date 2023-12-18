@@ -2,7 +2,7 @@
 
 ## Unit testing
 
-![codecov](https://codecov.io/gh/mizhonka/Spell-checker/graph/badge.svg?token=2QSRCPDGGL)  
+[![codecov](https://codecov.io/gh/mizhonka/Spell-checker/graph/badge.svg?token=2QSRCPDGGL)](https://codecov.io/gh/mizhonka/Spell-checker)  
 The following classes have been tested via Python unittest, and branch coverage can be seen on Codecov (click the badge above). Test and UI folders have been excluded.
 
 ### WordList
