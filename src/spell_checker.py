@@ -141,7 +141,6 @@ class SpellChecker:
 
         """
         word = self.get_word_at(index_range)
-        print(word)
         self.corrected_text = self.corrected_text.replace(word, correction)
 
     def get_text(self):

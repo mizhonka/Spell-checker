@@ -48,11 +48,19 @@ class MainView():
 
     def _stop(self):
         """
-        Returns the submit button to its orginal state.
+        Hides any extra ui elements after corrections have been made.
 
         """
+        self.first_word.grid_remove()
+        self.second_word.grid_remove()
+        self.accept.grid_remove()
+        self.skip.grid_remove()
+        self.input.delete("1.0", "end")
+        self.input.insert("1.0", self.checker.get_text())
         self.submit["state"] = "normal"
         self.submit["text"] = "Submit"
+        for tag in self.input.tag_names():
+            self.input.tag_delete(tag)
 
     def _show_next(self):
         """
@@ -60,13 +68,7 @@ class MainView():
 
         """
         if not self.suggestions:
-            self.first_word.grid_remove()
             self.correction_title.grid_remove()
-            self.second_word.grid_remove()
-            self.accept.grid_remove()
-            self.skip.grid_remove()
-            self.input.delete("1.0", "end")
-            self.input.insert("1.0", self.checker.get_text())
             self._stop()
             self.pack()
             return
@@ -111,6 +113,17 @@ class MainView():
         if not self.suggestions:
             self._no_mistakes()
             return
+        n=1
+        for t in self.suggestions:
+            word=self.checker.get_word_at(t[0])
+            i=self.input.search(word, "1.0")
+            mid=i.find(".")
+            a=i[0:mid]
+            suf=int(i[mid+1:])
+            b=suf+t[0][1]
+            self.input.tag_add(f"mistake{n}", i, f"{a}.{b}")
+            self.input.tag_config(f"mistake{n}", background="yellow")
+            n+=1
         self.first_word.grid()
         self.correction_title.grid()
         self.second_word.grid()

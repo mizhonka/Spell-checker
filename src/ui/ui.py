@@ -45,10 +45,10 @@ class UI:
 
         """
         self._hide_current_view()
-        self._current_view = MainView(self._root, self._handle_corrections)
+        self._current_view = MainView(self._root, self._init_spell_checker)
         self._current_view.pack()
 
-    def _handle_corrections(self):
+    def _init_spell_checker(self):
         """
         Creates an instance of SpellChecker.
 
