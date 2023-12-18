@@ -1,4 +1,4 @@
-from tkinter import ttk, Text, filedialog, constants, font
+from tkinter import ttk, Text, filedialog, constants, font, BOTH
 
 
 class MainView():
@@ -126,6 +126,7 @@ class MainView():
             n+=1
         self.first_word.grid()
         self.correction_title.grid()
+        self.correction_title["text"]="did you mean"
         self.second_word.grid()
         self.accept.grid()
         self.skip.grid()
@@ -136,7 +137,7 @@ class MainView():
         Packs all the elements inside _frame.
 
         """
-        self._frame.pack()
+        self._frame.pack(expand=True, fill=BOTH)
 
     def destroy(self):
         """
@@ -180,9 +181,6 @@ class MainView():
         input_submit = ttk.Button(
             self._frame, text="Submit", command=self._start)
 
-        self.input = input_field
-        self.submit = input_submit
-
         file_save = ttk.Button(
             self._frame, text="Save as...", command=self._save_file)
         file_submit = ttk.Button(
@@ -198,29 +196,34 @@ class MainView():
         skip_button = ttk.Button(
             self._frame, text="Skip", command=self._skip_correction)
 
-        file_submit.grid(row=0, column=0)
-        file_save.grid(row=0, column=1)
+        file_submit.grid(row=0, column=0, pady=5)
+        file_save.grid(row=0, column=1, pady=5)
         input_field.grid(row=1, column=0, columnspan=2,
-                         sticky=(constants.E, constants.W))
+                         padx=20, sticky=constants.NSEW)
+        self.input = input_field
+        self.submit = input_submit
 
-        first_word.grid(row=2, column=0)
+        first_word.grid(row=2, column=0, columnspan=2, pady=5)
         first_word.grid_remove()
         self.first_word = first_word
 
-        correction_title.grid(row=3, column=0)
+        correction_title.grid(row=3, column=0, columnspan=2, pady=5)
         correction_title.grid_remove()
         self.correction_title = correction_title
 
-        second_word.grid(row=4, column=0)
+        second_word.grid(row=4, column=0, columnspan=2, pady=5)
         second_word.grid_remove()
         self.second_word = second_word
 
-        accept_button.grid(row=5, column=0)
+        accept_button.grid(row=5, column=0, columnspan=2, pady=5)
         accept_button.grid_remove()
         self.accept = accept_button
 
-        skip_button.grid(row=6, column=0)
+        skip_button.grid(row=6, column=0, columnspan=2, pady=5)
         skip_button.grid_remove()
         self.skip = skip_button
 
-        input_submit.grid(row=7, column=0)
+        input_submit.grid(row=7, column=0, columnspan=2, pady=5)
+
+        self._frame.columnconfigure(0, weight=1)
+        self._frame.columnconfigure(1, weight=1)
