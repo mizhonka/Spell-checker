@@ -1,8 +1,6 @@
 from tkinter import Tk
 from spell_checker import SpellChecker
 from ui.main_view import MainView
-from ui.loading_view import LoadingView
-from ui.correction_view import CorrectionView
 
 
 class UI:

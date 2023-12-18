@@ -9,7 +9,9 @@ class SpellChecker:
     This class stores the given text input and gives spelling suggestions for each word.
 
     Attributes:
-        _words (list): List containing every word in the input data.
+        text_data (string): Input string given by user.
+        corrected_text (string): Edited input string with corrections.
+        _words (dictionary): List containing every word and its position in the input data.
         _extras (dictionary): Dictionary containing characters ignored by the algorithm.
         _incorrect_words (dictionary): Dictionary containing every incorrect word and it's index.
         _suggestions (dictionary): Dictionary containing a suggested word for every incorrect word.
@@ -25,14 +27,33 @@ class SpellChecker:
             data (string): Text input given by the user.
 
         """
-        self._words = data.split()
+        self.text_data=data
+        self.corrected_text=data
+        self._words={}
         self._extras = {}
         self._get__extras()
         self._incorrect_words = {}
         self._dictionary = WordList()
         self._dictionary.form_list()
         self._suggestions = {}
+        self._split_text()
         self._get_incorrect_words()
+
+    def _split_text(self):
+        """
+        Finds the indexes of words in text_data and fills self._words.
+
+        Parameters:
+            data (string): Text input given by the user.
+
+        """
+        words=self.text_data.split()
+        start=0
+        for w in words:
+            index=self.text_data.find(w, start)
+            range=(index+1, len(w))
+            self._words[w]=range
+            start=start+len(w)
 
     def _get__extras(self):
         """
@@ -65,12 +86,12 @@ class SpellChecker:
         Checks every word in self._words and fills self._incorrect_words.
 
         """
-        for i, word in enumerate(self._words):
+        for word, range in self._words.items():
             stripped = self._strip_characters(word)
             if not stripped:
                 continue
             if not self._dictionary.look_up_word(stripped):
-                self._incorrect_words[word] = i
+                self._incorrect_words[word] = range
 
     def get_suggestions(self):
         """
@@ -80,7 +101,7 @@ class SpellChecker:
             self._suggestions (dictionary)
 
         """
-        for wrong, index in self._incorrect_words.items():
+        for wrong, range in self._incorrect_words.items():
             stripped=self._strip_characters(wrong)
             cur = ("", -1)
             for word in self._dictionary.get_words():
@@ -92,39 +113,40 @@ class SpellChecker:
                     break
             if wrong[0] in ascii_uppercase:
                 cur=(cur[0].capitalize(), cur[1])
-            self._suggestions[index] = cur[0]
+            self._suggestions[range] = cur[0]
         return self._suggestions
 
-    def get_word_at(self, index):
+    def get_word_at(self, range):
         """
-        Returns a word from self._words at given index.
+        Returns a word from self._words at given range.
 
         Parameters:
-            index (int): Given index.
+            range (tuple): Given range.
 
         Returns:
             (string): Matching word.
 
         """
-        return self._words[index]
+        a=range[0]-1
+        b=a+range[1]
+        return self.text_data[a : b]
 
-    def correct(self, index, correction):
+    def correct(self, range, correction):
         """
-        Replaces a word in self._words with a corrected word.
+        Replaces a word in self.text_data with a corrected word.
 
         Parameters:
-            index (int): List position for the word to be changed.
+            range (tuple): Position of the original word.
             correction (string): Corrected word.
 
         """
-        self._words[index] = correction
+        word=self.get_word_at(range)
+        print(word)
+        self.corrected_text=self.corrected_text.replace(word, correction)
 
     def get_text(self):
         """
-        Turns words into a string.
-
-        Returns:
-            (string): self._words as a string.
+        Returns corrected text.
 
         """
-        return " ".join(self._words)
+        return self.corrected_text

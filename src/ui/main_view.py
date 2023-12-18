@@ -105,7 +105,7 @@ class MainView():
 
         """
         self.checker=checker
-        self.suggestions=[(i,s) for i, s in checker.get_suggestions().items()]
+        self.suggestions=[(r,s) for r, s in checker.get_suggestions().items()]
         if not self.suggestions:
             self._no_mistakes()
             return

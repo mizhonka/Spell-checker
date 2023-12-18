@@ -26,6 +26,7 @@ class WordList:
 
     Attributes:
         words (TrieNode): Root trie node containing the existing words.
+        size (int): Size (number of nodes) of the trie.
 
     """
 
