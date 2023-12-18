@@ -8,6 +8,8 @@
 
 [Implementation document](https://github.com/mizhonka/Spell-checker/blob/main/Documentation/implementation.md)
 
+[User guide](https://github.com/mizhonka/Spell-checker/blob/main/Documentation/user_guide.md)
+
 ## Weekly reports
 
 [Week 1](https://github.com/mizhonka/Spell-checker/blob/main/Documentation/week1report.md)
