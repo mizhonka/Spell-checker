@@ -1,7 +1,33 @@
 from tkinter import ttk, Text, filedialog, constants, font
 
 class MainView():
+    """
+    This class controls what is shown in
+
+    Attributes:
+        _frame (Frame): Tkinter frame containing all the elements.
+        command (method): Method from the UI class that initializes a SpellChecker.
+        checker (SpellChecker): Instance of SpellChecker.
+        suggestions (list): Contains tuples of correction suggestions given by SpellChecker.
+        def_font (font): Default font.
+        first_word (Label): Label showing an incorrectly spelled word.
+        second_word (Label): Label showing a correction suggestion.
+        correction_title (Label): Title showed when going through correction suggestions.
+        input (Text): Text field for user input.
+        submit (Button): Button used to submit the user input.
+        accept (Button): Button used to accept a correction suggestion.
+        skip (Button): Button used to skip a correction suggestion.
+    """
+
     def __init__(self, root, command):
+        """
+        The constructor for MainView class.
+
+        Parameters:
+            root (Tk): Source window for _frame.
+            command (method): Assigns self.command.
+
+        """
         self._frame = ttk.Frame(root)
         self.command=command
         self.checker=None
@@ -10,16 +36,28 @@ class MainView():
         self._initialize()
 
     def _start(self):
+        """
+        Calls self.command and begins the correction process.
+
+        """
         self.submit["state"]="disabled"
         self.submit["text"]="Processing..."
         self._frame.update_idletasks()
         self.command()
 
     def _stop(self):
+        """
+        Returns the submit button to its orginal state.
+
+        """
         self.submit["state"]="normal"
         self.submit["text"]="Submit"
 
     def _show_next(self):
+        """
+        Shows the next correction suggestion.
+
+        """
         if not self.suggestions:
             self.first_word.grid_remove()
             self.correction_title.grid_remove()
@@ -36,20 +74,36 @@ class MainView():
         self.second_word["text"]=f"{pair[1]}?"
 
     def _no_mistakes(self):
+        """
+        Shows the correction title when there are no misspellings.
+
+        """
         self.correction_title["text"]="There are no spelling mistakes, yay!"
         self.correction_title.grid()
         self._stop()
 
     def _skip_correction(self):
+        """
+        Skips a correction suggestion.
+
+        """
         self.suggestions.pop(0)
         self._show_next()
 
     def _accept_correction(self):
+        """
+        Accepts a correction suggestion.
+
+        """
         pair=self.suggestions.pop(0)
         self.checker.correct(pair[0], pair[1])
         self._show_next()
 
     def show_corrections(self, checker):
+        """
+        Calls checker.get_suggestions() and shows necessary ui elements.
+
+        """
         self.checker=checker
         self.suggestions=[(i,s) for i, s in checker.get_suggestions().items()]
         if not self.suggestions:
@@ -63,12 +117,24 @@ class MainView():
         self._show_next()
 
     def pack(self):
+        """
+        Packs all the elements inside _frame.
+
+        """
         self._frame.pack()
 
     def destroy(self):
+        """
+        Destroys _frame.
+
+        """
         self._frame.destroy()
 
     def _open_file(self):
+        """
+        Shows a file dialog for opening a file and writes it contents inside self.input.
+
+        """
         file = filedialog.askopenfile(filetypes=[("Text files", "*.txt")])
         if not file:
             return
@@ -79,12 +145,20 @@ class MainView():
         self.input.insert("1.0", content)
 
     def _save_file(self):
+        """
+        Shows a file dialog for saving a file and overwrites a file with the contents of self.input.
+
+        """
         file = filedialog.asksaveasfile()
         if not file:
             return
         file.write(self.input.get("1.0", "end"))
 
     def _initialize(self):
+        """
+        Creates all the ui elements.
+
+        """
         input_field = Text(self._frame, height=10)
         input_field.insert("1.0", "Type text here or select a file...")
 

@@ -103,7 +103,7 @@ class WordList:
 
     def get_words(self):
         """
-        Gets all words in the trie using DFS:
+        Gets all words in the trie using DFS.
 
         Returns:
             (list): Found words.
