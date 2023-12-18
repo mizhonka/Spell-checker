@@ -13,7 +13,7 @@ poetry run invoke start
 ```
 
 ## Usage
-![Screenshot](https://github.com/mizhonka/Spell-checker/new/main/Documentation/program.png)  
+![Screenshot](https://github.com/mizhonka/Spell-checker/blob/main/Documentation/program.png)  
 Inside the program, you have a couple of ways of entering text:  
 * Write directly in the text box
 * Open a .txt file with _Open file_
