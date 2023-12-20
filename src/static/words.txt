@@ -1533,6 +1533,8 @@ cheat
 cheats
 check
 checked
+checker
+checkers
 checking
 checklist
 checkout
@@ -1729,6 +1731,7 @@ coffee
 cognitive
 cohen
 coin
+coined
 coins
 col
 cold
@@ -4759,6 +4762,7 @@ january
 japan
 japanese
 jar
+jargon
 jason
 java
 javascript
@@ -6042,6 +6046,7 @@ nomination
 nominations
 non
 none
+non-English
 nonprofit
 noon
 nor
@@ -6076,6 +6081,8 @@ notify
 notion
 notre
 nottingham
+noun
+nouns
 nov
 nova
 novel
@@ -8379,6 +8386,7 @@ speeches
 speed
 speeds
 spell
+spell-checking
 spelling
 spencer
 spend
@@ -8396,6 +8404,7 @@ spirits
 spiritual
 spirituality
 split
+splitting
 spoke
 spoken
 spokesman
@@ -9863,6 +9872,7 @@ woods
 wool
 worcester
 word
+word-splitting
 wordpress
 words
 work
