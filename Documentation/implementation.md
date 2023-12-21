@@ -37,7 +37,7 @@ The time complexity for both searching and inserting is O(D * M), where D is the
 
 ### Flaws and improvements
 
-The way the program handles numbers and punctuation is a bit unclear at the moment. For example, if two words would be joined with...periods, they would be recognized as one word.
+The way the program handles numbers and punctuation is a bit unclear at the moment. For example, if two words are be joined with...periods, they would be recognized as one word.
 
 The trie structure and Damerau-Levenshtein algorithm could be optimized to calculate the distance while going through the trie, and then returning back if no shorter distance is found.
 
